@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Full Name Table</h1>
+    <h2> Age > 30</h2>
+     <table id="table1"> 
+        <thead>  
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead> 
+        <tbody></tbody>
+    </table>
+    <h2>Age >= 30</h2>
+    <table id="table2">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script> 
+        const people = [
+            {"first_name":"Ashish", "last_name":"Kumar", "age":24}, 
+            {"first_name":"Sonu", "last_name":"Singh", "age":34},
+            {"first_name":"Parul", "last_name":"Sharma", "age":21},
+            {"first_name":"Nitin", "age":40}
+        ];
+        const table1 = document.getElementById('table1').getElementsByTagName("tbody")[0];
+        const table2 = document.getElementById('table2').getElementsByTagName("tbody")[0];
+
+        for(let i=0; i<people.length; i++){
+            const person = people[i];
+
+            const tr = document.createElement('tr');
+            const td1 = document.createElement('td');
+            const td2 = document.createElement('td');
+
+            td1.innerHTML = person.first_name;
+            td2.innerHTML = person.last_name;
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+
+            if(person.age > 30){
+                table1.appendChild(tr);
+            }else if(person.age >= 21){
+                table2.appendChild(tr);
+            }
+
+            tr.addEventListener('click',function(){
+                alert(`Age: ${person.age}`);
+            });
+        }
+    </script>
+</body>
+</html>
